@@ -26,10 +26,4 @@
         android:textStyle="bold"
         android:id="@+id/viewAdress" />
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/alert_dark_frame"
-        android:id="@+id/imageView" />
-
 </LinearLayout>

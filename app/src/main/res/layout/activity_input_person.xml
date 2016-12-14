@@ -86,7 +86,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="26dp"
         android:id="@+id/button"
-        android:onClick="onButtonClicked"
+        android:onClick="onButtonClicked (InputPersonActivity)"
         android:layout_below="@+id/editAdresse"
         android:layout_centerHorizontal="true" />
 
