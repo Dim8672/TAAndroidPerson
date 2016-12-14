@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_input_person"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="ch.hearc.ig.ta.saisieclient1.InputPersonActivity">
+
+    <TextView
+        android:text="Prenom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="58dp"
+        android:id="@+id/Prenom"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Adresse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="47dp"
+        android:id="@+id/Adresse"
+        android:layout_below="@+id/editPrenom"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Afficher la liste des personnes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button"
+        android:layout_alignStart="@+id/button"
+        android:layout_marginTop="47dp"
+        android:id="@+id/button2"
+        android:layout_alignEnd="@+id/button"
+        android:onClick="onButtonClickedShowList" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:ems="10"
+        android:id="@+id/editPrenom"
+        android:layout_alignBaseline="@+id/Prenom"
+        android:layout_alignBottom="@+id/Prenom"
+        android:layout_alignEnd="@+id/button" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:ems="10"
+        android:id="@+id/editAdresse"
+        android:layout_alignBaseline="@+id/Adresse"
+        android:layout_alignBottom="@+id/Adresse"
+        android:layout_alignStart="@+id/editNom" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:ems="10"
+        android:id="@+id/editNom"
+        android:inputType="textPersonName"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nom"
+        android:id="@+id/Nom"
+        android:layout_alignBaseline="@+id/editNom"
+        android:layout_alignBottom="@+id/editNom"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Show the current Person"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:id="@+id/button"
+        android:onClick="onButtonClicked"
+        android:layout_below="@+id/editAdresse"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="Nombre de Personne dans la liste"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="17dp"
+        android:id="@+id/nbPeople" />
+</RelativeLayout>
