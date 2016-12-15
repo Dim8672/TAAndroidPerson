@@ -1,7 +1,11 @@
 package utilitaire;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import business.Person;
@@ -11,5 +15,23 @@ import business.Person;
  */
 
 public class Utilitaire implements Serializable {
+
+    public static Long nextId = new Long(0);
     public static List<Person> people = new ArrayList<>();
+
+    public static Date convertStringToDate(String date) {
+        DateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
+        try {
+            return formatter.parse(date);
+        } catch (ParseException e) {
+
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static Long getNextId(){
+        nextId++;
+        return nextId;
+    }
 }
