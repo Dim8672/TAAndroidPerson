@@ -36,8 +36,6 @@ public class ShowPersonListActivity extends AppCompatActivity implements Adapter
         adapter.setItemPositionToShowButton(i);
         Person item = (Person) adapterView.getItemAtPosition(i);
         Toast.makeText(adapterView.getContext(),item.getNom(),Toast.LENGTH_SHORT).show();
-        Button editButton = (Button) findViewById(R.id.buttonEditPerson);
-        Button deleteButton = (Button) findViewById(R.id.buttonDeletePerson);
         adapter.notifyDataSetChanged();
     }
 }

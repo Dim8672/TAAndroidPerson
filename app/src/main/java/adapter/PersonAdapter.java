@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -34,6 +35,7 @@ public class PersonAdapter extends ArrayAdapter<Person> {
         this.itemPositionToShowButton = i;
     }
 
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -41,8 +43,16 @@ public class PersonAdapter extends ArrayAdapter<Person> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.row_person,parent, false);
         }
 
-        final Button editPerson = (Button)convertView.findViewById(R.id.buttonEditPerson);
-        final Button deletePerson = (Button)convertView.findViewById(R.id.buttonDeletePerson);
+        ImageButton editPerson = (ImageButton)convertView.findViewById(R.id.buttonEditPerson);
+        ImageButton deletePerson = (ImageButton)convertView.findViewById(R.id.buttonDeletePerson);
+
+        editPerson.setFocusable(false);
+        editPerson.setFocusableInTouchMode(false);
+        editPerson.setClickable(true);
+
+        deletePerson.setFocusable(false);
+        deletePerson.setFocusable(false);
+        deletePerson.setClickable(true);
 
         Person p = getItem(position);
         ((TextView) convertView.findViewById(R.id.viewId)).setText(p.getId().toString());
