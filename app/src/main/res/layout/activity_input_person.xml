@@ -112,9 +112,7 @@
             android:inputType="date"
             android:ems="10"
             android:id="@+id/editDateNaissance"
-            android:selectAllOnFocus="false"
             android:layout_alignBaseline="@+id/DateNaissance"
-            android:layout_alignBottom="@+id/DateNaissance"
             android:layout_alignParentEnd="true"
             tools:text="DateNaissance"/>
 

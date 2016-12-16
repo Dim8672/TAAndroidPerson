@@ -1,11 +1,16 @@
 package ch.hearc.ig.ta.saisieclient1;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -20,6 +25,7 @@ public class ShowPersonListActivity extends AppCompatActivity implements Adapter
 
     private PersonAdapter adapter = null;
     private PersonDAO personDAO;
+    private AlertDialog alert;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +37,24 @@ public class ShowPersonListActivity extends AppCompatActivity implements Adapter
         personDAO = new PersonDAO();
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
+
+        EditText inputSearch = (EditText) findViewById(R.id.inputSearch);
+        inputSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                ShowPersonListActivity.this.adapter.getFilter().filter(charSequence);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                // TODO Auto-generated method stub
+            }
+        });
     }
 
     @Override
@@ -51,7 +75,7 @@ public class ShowPersonListActivity extends AppCompatActivity implements Adapter
 
     public void onButtonDeleteClick(View v){
         personDAO.delete(adapter.getPersonSelected());
-        Intent intent = new Intent(ShowPersonListActivity.this,ShowPersonListActivity.class);
+        Intent intent = new Intent(ShowPersonListActivity.this, ShowPersonListActivity.class);
         this.startActivity(intent);
     }
 
