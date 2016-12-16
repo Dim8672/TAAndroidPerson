@@ -8,9 +8,11 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import business.Person;
 import ch.hearc.ig.ta.saisieclient1.R;
+import utilitaire.Utilitaire;
 
 /**
  * Created by dimitri.mella on 12.12.2016.
@@ -19,7 +21,7 @@ import ch.hearc.ig.ta.saisieclient1.R;
 public class PersonAdapter extends ArrayAdapter<Person> {
 
 
-    public PersonAdapter(Context context, ArrayList<Person> people) {
+    public PersonAdapter(Context context, List<Person> people) {
         super(context, 0,people);
     }
 
@@ -31,9 +33,12 @@ public class PersonAdapter extends ArrayAdapter<Person> {
         }
 
         Person p = getItem(position);
+        ((TextView) convertView.findViewById(R.id.viewId)).setText(p.getId().toString());
         ((TextView) convertView.findViewById(R.id.viewNom)).setText(p.getNom());
         ((TextView) convertView.findViewById(R.id.viewPrenom)).setText(p.getPrenom());
-        ((TextView) convertView.findViewById(R.id.viewAdress)).setText(p.getAdresse());
+        ((TextView) convertView.findViewById(R.id.viewAddress)).setText(p.getAdresse());
+        ((TextView) convertView.findViewById(R.id.viewCity)).setText(p.getVille());
+        ((TextView) convertView.findViewById(R.id.viewDateNaissance)).setText(Utilitaire.convertDateToString(p.getDateNaissance()));
 
         return convertView;
     }

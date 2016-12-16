@@ -1,29 +1,98 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/viewId"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="6dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="6dp"
+        android:scaleType="centerInside"
+        android:gravity="center"
+        tools:text="ID"/>
+
+    <RelativeLayout
+        android:id="@+id/recipe_list_text_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:textStyle="bold"
-        android:id="@+id/viewNom" />
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/viewId">
 
-    <TextView
+
+        <TextView
+            android:id="@+id/viewPrenom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:textSize="18sp"
+            tools:text="Prenom"
+            />
+
+        <TextView
+            android:id="@+id/viewNom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/viewPrenom"
+            android:layout_marginRight="8dp"
+            android:textSize="18sp"
+            tools:text="Nom"
+            />
+
+        <TextView
+            android:id="@+id/viewDateNaissance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/viewPrenom"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="2dp"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:textSize="16sp"
+            tools:text="Date Naissance"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/recipe_list_adress_city_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:textStyle="bold"
-        android:id="@+id/viewPrenom" />
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/recipe_list_text_layout">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_toRightOf="@+id/viewSurname"
-        android:textStyle="bold"
-        android:id="@+id/viewAdress" />
+        <TextView
+            android:id="@+id/viewAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="2dp"
+            android:maxLines="1"
+            android:paddingEnd="4dp"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            tools:text="Adresse"
+            />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/viewCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="2dp"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/viewAddress"
+            android:layout_alignLeft="@+id/viewAddress"
+            android:maxLines="1"
+            android:paddingEnd="4dp"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            tools:text="Ville" />
+    </RelativeLayout>
+</RelativeLayout>

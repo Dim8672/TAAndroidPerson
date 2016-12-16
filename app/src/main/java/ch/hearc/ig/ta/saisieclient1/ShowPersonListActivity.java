@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 import adapter.PersonAdapter;
 import business.Person;
+import utilitaire.Utilitaire;
 
 public class ShowPersonListActivity extends AppCompatActivity {
 
@@ -21,8 +22,7 @@ public class ShowPersonListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_show_person_list);
         Intent intent = this.getIntent();
         ListView listView = (ListView) this.findViewById(R.id.listView1);
-        ArrayList<Person> people = this.getIntent().getParcelableArrayListExtra("people");
-        PersonAdapter adapter = new PersonAdapter(ShowPersonListActivity.this, people);
+        PersonAdapter adapter = new PersonAdapter(ShowPersonListActivity.this, Utilitaire.people);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

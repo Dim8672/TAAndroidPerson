@@ -2,6 +2,7 @@ package utilitaire;
 
 import java.io.Serializable;
 import java.text.DateFormat;
+import java.text.Format;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -28,6 +29,12 @@ public class Utilitaire implements Serializable {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static String convertDateToString(Date date){
+        Format formatter;
+        formatter = new SimpleDateFormat("dd.MM.yyyy");
+        return formatter.format(date);
     }
 
     public static Long getNextId(){
