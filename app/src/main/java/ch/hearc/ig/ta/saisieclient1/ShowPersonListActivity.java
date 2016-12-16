@@ -38,4 +38,14 @@ public class ShowPersonListActivity extends AppCompatActivity implements Adapter
         Toast.makeText(adapterView.getContext(),item.getNom(),Toast.LENGTH_SHORT).show();
         adapter.notifyDataSetChanged();
     }
+
+    public void onButtonEditClick(View v){
+        Intent intent = new Intent(ShowPersonListActivity.this,InputPersonActivity.class);
+        intent.putExtra("create",false);
+        this.startActivity(intent);
+    }
+
+    public void onButtonDeleteClick(View v){
+
+    }
 }

@@ -31,6 +31,7 @@ public class MainMenuActivity extends AppCompatActivity {
      */
     public void onButtonClickCreatePerson(View v){
         Intent intent = new Intent(MainMenuActivity.this,InputPersonActivity.class);
+        intent.putExtra("create",true);
         this.startActivity(intent);
     }
 
