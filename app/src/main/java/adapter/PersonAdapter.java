@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import java.util.List;
 
 import business.Person;
 import ch.hearc.ig.ta.saisieclient1.R;
+import ch.hearc.ig.ta.saisieclient1.ShowPersonListActivity;
 import utilitaire.Utilitaire;
 
 /**
@@ -20,9 +22,16 @@ import utilitaire.Utilitaire;
 
 public class PersonAdapter extends ArrayAdapter<Person> {
 
+    private int itemPositionToShowButton;
+
 
     public PersonAdapter(Context context, List<Person> people) {
         super(context, 0,people);
+        this.itemPositionToShowButton = - 1;
+    }
+
+    public void setItemPositionToShowButton(int i){
+        this.itemPositionToShowButton = i;
     }
 
     @Override
@@ -32,6 +41,9 @@ public class PersonAdapter extends ArrayAdapter<Person> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.row_person,parent, false);
         }
 
+        final Button editPerson = (Button)convertView.findViewById(R.id.buttonEditPerson);
+        final Button deletePerson = (Button)convertView.findViewById(R.id.buttonDeletePerson);
+
         Person p = getItem(position);
         ((TextView) convertView.findViewById(R.id.viewId)).setText(p.getId().toString());
         ((TextView) convertView.findViewById(R.id.viewNom)).setText(p.getNom());
@@ -40,6 +52,18 @@ public class PersonAdapter extends ArrayAdapter<Person> {
         ((TextView) convertView.findViewById(R.id.viewCity)).setText(p.getVille());
         ((TextView) convertView.findViewById(R.id.viewDateNaissance)).setText(Utilitaire.convertDateToString(p.getDateNaissance()));
 
+        if(this.itemPositionToShowButton == position){
+            if(editPerson.getVisibility() == View.VISIBLE){
+                editPerson.setVisibility(View.GONE);
+                deletePerson.setVisibility(View.GONE);
+            } else {
+                editPerson.setVisibility(View.VISIBLE);
+                deletePerson.setVisibility(View.VISIBLE);
+            }
+        } else {
+            editPerson.setVisibility(View.GONE);
+            deletePerson.setVisibility(View.GONE);
+        }
         return convertView;
     }
 }

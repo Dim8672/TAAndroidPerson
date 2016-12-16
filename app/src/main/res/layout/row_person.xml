@@ -95,4 +95,25 @@
             android:textSize="12sp"
             tools:text="Ville" />
     </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/recipe_list_button_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:layout_below="@+id/viewId">
+
+        <Button
+            android:id="@+id/buttonEditPerson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:focusable="false"/>
+        <Button
+            android:id="@+id/buttonDeletePerson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/buttonEditPerson"
+            android:visibility="gone"
+            android:focusable="false"/>
+    </RelativeLayout>
 </RelativeLayout>
