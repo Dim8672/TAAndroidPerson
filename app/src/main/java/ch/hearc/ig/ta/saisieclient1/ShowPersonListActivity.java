@@ -13,11 +13,13 @@ import java.util.ArrayList;
 
 import adapter.PersonAdapter;
 import business.Person;
+import dao.PersonDAO;
 import utilitaire.Utilitaire;
 
 public class ShowPersonListActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     private PersonAdapter adapter = null;
+    private PersonDAO personDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,7 @@ public class ShowPersonListActivity extends AppCompatActivity implements Adapter
         Intent intent = this.getIntent();
         ListView listView = (ListView) this.findViewById(R.id.listView1);
         adapter = new PersonAdapter(ShowPersonListActivity.this, Utilitaire.people);
+        personDAO = new PersonDAO();
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
     }
@@ -47,6 +50,13 @@ public class ShowPersonListActivity extends AppCompatActivity implements Adapter
     }
 
     public void onButtonDeleteClick(View v){
+        personDAO.delete(adapter.getPersonSelected());
+        Intent intent = new Intent(ShowPersonListActivity.this,ShowPersonListActivity.class);
+        this.startActivity(intent);
+    }
 
+    public void onBackPressed(){
+        Intent intent = new Intent(ShowPersonListActivity.this, MainMenuActivity.class);
+        this.startActivity(intent);
     }
 }

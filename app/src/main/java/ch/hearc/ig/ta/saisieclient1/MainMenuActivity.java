@@ -19,8 +19,8 @@ public class MainMenuActivity extends AppCompatActivity {
         PersonDAO personDAO = new PersonDAO();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
-        personDAO.create(new Person("Mella","Dimitri","Patelles 3","Corcelles",Utilitaire.convertStringToDate("07.06.1995")));
-        personDAO.create(new Person("Mella","Gabriel","Patelles 3","Corcelles",Utilitaire.convertStringToDate("30.06.1995")));
+        // personDAO.create(new Person("Mella","Dimitri","Patelles 3","Corcelles",Utilitaire.convertStringToDate("07.06.1995")));
+        // personDAO.create(new Person("Mella","Gabriel","Patelles 3","Corcelles",Utilitaire.convertStringToDate("30.06.1995")));
         TextView editNbPeople =  (TextView) this.findViewById(R.id.nbPeople);
         editNbPeople.setText("Nombre de personnes : " + Utilitaire.people.size());
     }

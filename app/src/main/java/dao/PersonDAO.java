@@ -30,7 +30,7 @@ public class PersonDAO implements DAO {
 
     @Override
     public void delete(Person person) {
-
+        Utilitaire.people.remove(person);
     }
 
     @Override
