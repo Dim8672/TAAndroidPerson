@@ -28,13 +28,13 @@ public class ShowPersonListActivity extends AppCompatActivity implements Adapter
         adapter = new PersonAdapter(ShowPersonListActivity.this, Utilitaire.people);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
-
     }
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         adapter.setItemPositionToShowButton(i);
         Person item = (Person) adapterView.getItemAtPosition(i);
+        adapter.setPersonSelected(item);
         Toast.makeText(adapterView.getContext(),item.getNom(),Toast.LENGTH_SHORT).show();
         adapter.notifyDataSetChanged();
     }
@@ -42,6 +42,7 @@ public class ShowPersonListActivity extends AppCompatActivity implements Adapter
     public void onButtonEditClick(View v){
         Intent intent = new Intent(ShowPersonListActivity.this,InputPersonActivity.class);
         intent.putExtra("create",false);
+        intent.putExtra("person",adapter.getPersonSelected());
         this.startActivity(intent);
     }
 

@@ -24,6 +24,7 @@ import utilitaire.Utilitaire;
 public class PersonAdapter extends ArrayAdapter<Person> {
 
     private int itemPositionToShowButton;
+    private Person personSelected;
 
 
     public PersonAdapter(Context context, List<Person> people) {
@@ -34,6 +35,10 @@ public class PersonAdapter extends ArrayAdapter<Person> {
     public void setItemPositionToShowButton(int i){
         this.itemPositionToShowButton = i;
     }
+
+    public void setPersonSelected(Person personSelected) { this.personSelected = personSelected;}
+
+    public Person getPersonSelected(){ return this.personSelected;}
 
 
     @Override

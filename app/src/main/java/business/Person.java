@@ -5,6 +5,8 @@ import android.os.Parcelable;
 
 import java.util.Date;
 
+import utilitaire.Utilitaire;
+
 /**
  * Created by dimitri.mella on 07.12.2016.
  */
@@ -34,9 +36,12 @@ public class Person implements Parcelable {
     };
 
     public Person(Parcel in){
+        this.id = in.readLong();
         this.nom = in.readString();
         this.prenom = in.readString();
         this.adresse = in.readString();
+        this.ville = in.readString();
+        this.dateNaissance = Utilitaire.convertStringToDate(in.readString());
     }
 
     public Person(String nom, String prenom, String adresse, String ville, Date dateNaissance){
@@ -107,8 +112,11 @@ public class Person implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeLong(id);
         parcel.writeString(nom);
         parcel.writeString(prenom);
         parcel.writeString(adresse);
+        parcel.writeString(ville);
+        parcel.writeString(Utilitaire.convertDateToString(dateNaissance));
     }
 }

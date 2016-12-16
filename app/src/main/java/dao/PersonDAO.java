@@ -17,7 +17,15 @@ public class PersonDAO implements DAO {
 
     @Override
     public void update(Person person) {
-
+        for(Person oldPerson : Utilitaire.people){
+            if(person.getId().equals(oldPerson.getId())){
+                oldPerson.setAdresse(person.getAdresse());
+                oldPerson.setDateNaissance(person.getDateNaissance());
+                oldPerson.setNom(person.getNom());
+                oldPerson.setPrenom(person.getPrenom());
+                oldPerson.setVille(person.getVille());
+            }
+        }
     }
 
     @Override
@@ -26,7 +34,17 @@ public class PersonDAO implements DAO {
     }
 
     @Override
-    public void searchByNom(String nom) {
+    public Person searchByNom(String nom) {
+        return null;
+    }
 
+    @Override
+    public Person searchById(Long id){
+        for(Person person : Utilitaire.people){
+            if(person.getId().equals(id)){
+                return person;
+            }
+        }
+        return null;
     }
 }

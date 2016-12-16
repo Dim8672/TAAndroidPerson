@@ -16,6 +16,7 @@
         android:id="@+id/id"
         android:layout_centerHorizontal="true"
         android:gravity="center"
+        android:visibility="gone"
         tools:text="test"/>
 
     <RelativeLayout
@@ -126,7 +127,7 @@
         android:layout_marginTop="40dp"
         android:id="@+id/buttonCreate"
         android:onClick="onButtonClicked"
-        android:visibility="gone"
+        android:visibility="visible"
         android:layout_below="@+id/recipe_edit_text_layout"
         android:layout_centerHorizontal="true"/>
 
