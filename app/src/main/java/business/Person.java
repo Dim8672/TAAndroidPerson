@@ -35,6 +35,10 @@ public class Person implements Parcelable {
         }
     };
 
+    public Person(){
+
+    }
+
     public Person(Parcel in){
         this.id = in.readLong();
         this.nom = in.readString();

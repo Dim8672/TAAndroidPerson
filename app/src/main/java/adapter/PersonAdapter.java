@@ -1,5 +1,6 @@
 package adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,15 +26,21 @@ import utilitaire.Utilitaire;
 
 public class PersonAdapter extends ArrayAdapter<Person> implements Filterable {
 
+    private Activity activity;
+    private static LayoutInflater inflater;
     private int itemPositionToShowButton;
     private Person personSelected;
     private List<Person> filteredData;
+    private List<Person> originalData;
 
 
-    public PersonAdapter(Context context, List<Person> people) {
-        super(context, 0,people);
+    public PersonAdapter(Activity a, List<Person> people) {
+        super(a, 0,people);
+        activity = a;
+        inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.itemPositionToShowButton = - 1;
         this.filteredData = people;
+        this.originalData = people;
     }
 
     public void setItemPositionToShowButton(int i){
@@ -44,12 +51,20 @@ public class PersonAdapter extends ArrayAdapter<Person> implements Filterable {
 
     public Person getPersonSelected(){ return this.personSelected;}
 
+    /**
+     * Réecriture de la méthode pour qu'elle retourne le size de la filteredList (autrement c'est le size de l'orginal)
+     * @return
+     */
+    public int getCount(){
+        return filteredData.size();
+    }
+
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
         if(convertView == null){
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.row_person,parent, false);
+            convertView = inflater.inflate(R.layout.row_person,null);
         }
 
         ImageButton editPerson = (ImageButton)convertView.findViewById(R.id.buttonEditPerson);
@@ -63,9 +78,8 @@ public class PersonAdapter extends ArrayAdapter<Person> implements Filterable {
         deletePerson.setFocusable(false);
         deletePerson.setClickable(true);
 
-        if(filteredData.size() != 0) {
-
-            Person p = filteredData.get(position);
+        Person p = new Person();
+        p = filteredData.get(position);
 
             ((TextView) convertView.findViewById(R.id.viewId)).setText(p.getId().toString());
             ((TextView) convertView.findViewById(R.id.viewNom)).setText(p.getNom());
@@ -86,8 +100,8 @@ public class PersonAdapter extends ArrayAdapter<Person> implements Filterable {
                 editPerson.setVisibility(View.GONE);
                 deletePerson.setVisibility(View.GONE);
             }
-        }
-        return convertView;
+            return convertView;
+
     }
     @Override
     public Filter getFilter(){
@@ -97,12 +111,12 @@ public class PersonAdapter extends ArrayAdapter<Person> implements Filterable {
                 FilterResults results = new FilterResults();
 
                 if(charSequence == null || charSequence.length() == 0){
-                    results.values = Utilitaire.people;
-                    results.count = Utilitaire.people.size();
+                    results.values = originalData;
+                    results.count = originalData.size();
                 } else {
-                    ArrayList<Person> filterResultData = new ArrayList<>();
-                    for(Person person : Utilitaire.people){
-                        if(person.getNom().contains(charSequence)){
+                    List<Person> filterResultData = new ArrayList<>();
+                    for(Person person : originalData){
+                        if(person.getNom().startsWith(charSequence.toString())){
                             filterResultData.add(person);
                         }
                     }
