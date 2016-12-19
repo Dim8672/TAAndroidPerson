@@ -20,7 +20,11 @@ public class MainMenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
         TextView editNbPeople =  (TextView) this.findViewById(R.id.nbPeople);
-        editNbPeople.setText("Nombre de personnes : " + Utilitaire.people.size());
+        if(Utilitaire.people.size() <= 0){
+            editNbPeople.setText("Aucune personne n'existe");
+        } else {
+            editNbPeople.setText("Nombre de personnes : " + Utilitaire.people.size());
+        }
     }
 
     /**

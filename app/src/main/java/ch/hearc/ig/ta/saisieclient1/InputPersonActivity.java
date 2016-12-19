@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -27,6 +28,7 @@ public class InputPersonActivity extends AppCompatActivity {
         setContentView(R.layout.activity_input_person);
         this.create = this.getIntent().getExtras().getBoolean("create");
         this.personDAO = new PersonDAO();
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         if(!this.create){
             Person person = (Person) this.getIntent().getExtras().getParcelable("person");

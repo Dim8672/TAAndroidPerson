@@ -17,6 +17,8 @@
         android:layout_centerHorizontal="true"
         android:gravity="center"
         android:visibility="gone"
+        android:textStyle="bold"
+        android:textSize="32sp"
         tools:text="test"/>
 
     <RelativeLayout
