@@ -11,91 +11,136 @@
     tools:context="ch.hearc.ig.ta.saisieclient1.InputPersonActivity">
 
     <TextView
-        android:text="Prenom"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:id="@+id/id"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:visibility="gone"
+        android:textStyle="bold"
+        android:textSize="32sp"
+        tools:text="test"/>
+
+    <RelativeLayout
+        android:id="@+id/recipe_edit_text_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="58dp"
-        android:id="@+id/Prenom"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@id/id">
 
-    <TextView
-        android:text="Adresse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="47dp"
-        android:id="@+id/Adresse"
-        android:layout_below="@+id/editPrenom"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:text="Afficher la liste des personnes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/button"
-        android:layout_alignStart="@+id/button"
-        android:layout_marginTop="47dp"
-        android:id="@+id/button2"
-        android:layout_alignEnd="@+id/button"
-        android:onClick="onButtonClickedShowList" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Name"
-        android:ems="10"
-        android:id="@+id/editPrenom"
-        android:layout_alignBaseline="@+id/Prenom"
-        android:layout_alignBottom="@+id/Prenom"
-        android:layout_alignEnd="@+id/button" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Name"
-        android:ems="10"
-        android:id="@+id/editAdresse"
-        android:layout_alignBaseline="@+id/Adresse"
-        android:layout_alignBottom="@+id/Adresse"
-        android:layout_alignStart="@+id/editNom" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Name"
-        android:ems="10"
-        android:id="@+id/editNom"
-        android:inputType="textPersonName"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
+        <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nom"
         android:id="@+id/Nom"
-        android:layout_alignBaseline="@+id/editNom"
-        android:layout_alignBottom="@+id/editNom"
-        android:layout_alignParentStart="true" />
+        android:layout_marginTop="30dp"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:id="@+id/editNom"
+            android:inputType="textPersonName"
+            android:layout_alignParentEnd="true"
+            android:layout_alignBaseline="@+id/Nom"
+            tools:text="Nom"/>
+
+        <TextView
+            android:text="Prenom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Prenom"
+            android:layout_marginTop="30dp"
+            android:layout_below="@+id/editNom"
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/editPrenom"
+            android:layout_alignBaseline="@+id/Prenom"
+            android:layout_alignParentEnd="true"
+            tools:text="Prenom"/>
+
+        <TextView
+            android:text="Adresse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Adresse"
+            android:layout_marginTop="30dp"
+            android:layout_below="@+id/Prenom"
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/editAdresse"
+            android:layout_alignParentEnd="true"
+            android:layout_alignBaseline="@+id/Adresse"
+            tools:text="Adresse"/>
+
+        <TextView
+            android:text="Ville"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Ville"
+            android:layout_marginTop="30dp"
+            android:layout_below="@+id/Adresse" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/editVille"
+            android:layout_alignParentEnd="true"
+            android:layout_alignBaseline="@+id/Ville"
+            tools:text="Ville"/>
+
+        <TextView
+            android:text="Date de naissance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/DateNaissance"
+            android:layout_below="@+id/Ville"
+            android:layout_marginTop="30dp" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="date"
+            android:ems="10"
+            android:id="@+id/editDateNaissance"
+            android:layout_alignBaseline="@+id/DateNaissance"
+            android:layout_alignParentEnd="true"
+            tools:text="DateNaissance"/>
+
+        </RelativeLayout>
 
     <Button
-        android:text="Show the current Person"
+        android:text="Créer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
-        android:id="@+id/button"
+        android:layout_marginTop="40dp"
+        android:id="@+id/buttonCreate"
         android:onClick="onButtonClicked"
-        android:layout_below="@+id/editAdresse"
-        android:layout_centerHorizontal="true" />
+        android:visibility="visible"
+        android:layout_below="@+id/recipe_edit_text_layout"
+        android:layout_centerHorizontal="true"/>
 
-    <TextView
-        android:text="Nombre de Personne dans la liste"
+    <Button
+        android:text="Modifier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="17dp"
-        android:id="@+id/nbPeople" />
+        android:layout_marginTop="40dp"
+        android:id="@+id/buttonupdate"
+        android:onClick="onButtonClicked"
+        android:visibility="gone"
+        android:layout_below="@+id/recipe_edit_text_layout"
+        android:layout_centerHorizontal="true"/>
+
+
 </RelativeLayout>
