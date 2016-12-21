@@ -78,6 +78,7 @@ public class InputPersonActivity extends AppCompatActivity {
             person.setId(new Long (id.getText().toString()));
             this.personDAO.update(person);
             Intent intent2 = new Intent(InputPersonActivity.this,ShowPersonListActivity.class);
+            intent2.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent2);
         }
 
