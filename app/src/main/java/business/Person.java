@@ -65,6 +65,14 @@ public class Person implements Parcelable {
         this.dateNaissance = dateNaissance;
     }
 
+    public Person(Long id, String nom, String prenom, String adresse, String ville){
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.adresse = adresse;
+        this.ville = ville;
+    }
+
     public String getAdresse() {
         return adresse;
     }

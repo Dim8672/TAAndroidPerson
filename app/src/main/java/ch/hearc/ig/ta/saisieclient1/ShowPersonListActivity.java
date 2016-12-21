@@ -1,7 +1,9 @@
 package ch.hearc.ig.ta.saisieclient1;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,9 +18,11 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import adapter.PersonAdapter;
 import business.Person;
+import communication.PersonneServiceInvocator;
 import dao.PersonDAO;
 import utilitaire.Utilitaire;
 
@@ -27,6 +31,8 @@ public class ShowPersonListActivity extends AppCompatActivity implements Adapter
     private PersonAdapter adapter = null;
     private PersonDAO personDAO;
     private AlertDialog alert;
+    private ListView listView;
+    protected InitTask initTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +40,11 @@ public class ShowPersonListActivity extends AppCompatActivity implements Adapter
         setContentView(R.layout.activity_show_person_list);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         Intent intent = this.getIntent();
-        ListView listView = (ListView) this.findViewById(R.id.listView1);
-        adapter = new PersonAdapter(ShowPersonListActivity.this, Utilitaire.people);
+        listView = (ListView) this.findViewById(R.id.listView1);
         personDAO = new PersonDAO();
-        listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
+        initTask = new ShowPersonListActivity.InitTask();
+        initTask.execute(this);
 
         EditText inputSearch = (EditText) findViewById(R.id.inputSearch);
         inputSearch.addTextChangedListener(new TextWatcher() {
@@ -84,5 +90,23 @@ public class ShowPersonListActivity extends AppCompatActivity implements Adapter
     public void onBackPressed(){
         Intent intent = new Intent(ShowPersonListActivity.this, MainMenuActivity.class);
         this.startActivity(intent);
+    }
+
+    protected class InitTask extends AsyncTask<Context, Integer, String> {
+
+        String test2;
+        @Override
+        protected String doInBackground( Context... params ) {
+            // personnes = PersonneServiceInvocator.serviceR(702, null, null, null, null); // 702 correspond à l'id d'un enregistrement de ma base
+            Utilitaire.people = PersonneServiceInvocator.serviceRAll();
+            return null;
+        }
+
+        protected void onPostExecute(String s){
+            // s = personnes.get(0).getNom();
+            adapter = new PersonAdapter(ShowPersonListActivity.this, Utilitaire.people);
+            listView.setAdapter(adapter);
+        }
+
     }
 }

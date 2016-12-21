@@ -86,7 +86,7 @@ public class PersonAdapter extends ArrayAdapter<Person> implements Filterable {
             ((TextView) convertView.findViewById(R.id.viewPrenom)).setText(p.getPrenom());
             ((TextView) convertView.findViewById(R.id.viewAddress)).setText(p.getAdresse());
             ((TextView) convertView.findViewById(R.id.viewCity)).setText(p.getVille());
-            ((TextView) convertView.findViewById(R.id.viewDateNaissance)).setText(Utilitaire.convertDateToString(p.getDateNaissance()));
+//            ((TextView) convertView.findViewById(R.id.viewDateNaissance)).setText(Utilitaire.convertDateToString(p.getDateNaissance()));
 
             if (this.itemPositionToShowButton == position) {
                 if (editPerson.getVisibility() == View.VISIBLE) {
